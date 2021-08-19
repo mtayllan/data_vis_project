@@ -3,7 +3,7 @@ const history = () => {
     const facts = crossfilter(dataset)
     const dateDim = facts.dimension(d => d.Date)
     const languages = dataset.columns.slice(2, 30)
-    const xScale = d3.scaleTime().domain([dateDim.bottom(16)[15].Date, dateDim.top(1)[0].Date])
+    const xScale = d3.scaleTime().domain([dateDim.bottom(1)[0].Date, dateDim.top(1)[0].Date])
     const randomSelected = languages.sort(() => Math.random() - Math.random()).slice(0, 3)
     const languageColorScale = d3.scaleOrdinal()
       .domain(["Abap", "Ada", "C/C++", "C#", "Cobol", "Dart", "Delphi", "Go", "Groovy", "Haskell", "Java", "JavaScript", "Julia", "Kotlin", "Lua", "Matlab", "Objective-C", "Perl", "PHP", "Python", "R", "Ruby", "Rust", "Scala", "Swift", "TypeScript", "VBA", "Visual Basic"])
