@@ -51,12 +51,8 @@ function onlyUnique(value, index, self) {
       .renderHorizontalGridLines(true)
       .colorCalculator(d => {
         if(typeof groupByName(d.key) !== 'undefined') {
-          console.log(d.key)
-          console.log(groupByName(d.key))
-          console.log(colorScale(groupByName(d.key)))
           return colorScale(groupByName(d.key))
         } else {
-          console.log('tururu')
           return '#aaaa'
         }
       })
