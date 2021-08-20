@@ -15,6 +15,13 @@
 
   const width = 1000;
 
+  const removeLanguage = (lang) => {
+    const index = selectedLanguages.indexOf(lang);
+    if (index > -1) {
+      selectedLanguages.splice(index, 1);
+    }
+  }
+
   const build = () => {
     const compositeChart = dc.compositeChart(document.querySelector("#series"))
 
@@ -42,12 +49,14 @@
     select_box = document.querySelectorAll(`input[type='checkbox'][value='${selected_lang}']`)[0]
     
     if (select_box.checked == true) {
-      selectedLanguages.push(selected_lang)
-    } else {
-      const index = selectedLanguages.indexOf(selected_lang);
-      if (index > -1) {
-        selectedLanguages.splice(index, 1);
+      if(document.querySelectorAll('input[type="checkbox"]:checked').length > 5) {
+        alert('Você só pode selecionar até 5 linguagens!')
+        select_box.checked = false
+      } else {
+        selectedLanguages.push(selected_lang)
       }
+    } else {
+      removeLanguage(selected_lang)
     }
 
     build();
