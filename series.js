@@ -9,7 +9,10 @@
     .domain(languages)
     .range(["#00A1EA", "#14127B", "#A8B9CC", "#9B6CD7", "#2ADF32", "#04599C", "#E7273A", "#00ABD8", "#569ABD", "#5A4E82", "#FF9700", "#EFD81D", "#242424", "#3485DA", "#2E0080", "#517374", "#AAB0C2", "#08608D", "#7377AD", "#F6DD65", "#8193B6", "#E51521", "#491507", "#D73222", "#F76A00", "#2F74C0", "#D9CD00", "#59479B"])
 
-  const selectedLanguages = ['Objective-C', 'Ruby', 'Python'];
+  const selectedLanguages = languages.sort(() => Math.random() - Math.random()).slice(0, 3);
+
+  languages.sort();
+
   const width = 1000;
 
   const build = () => {
@@ -35,7 +38,18 @@
     dc.renderAll()
   }
 
-  const handleSelectChange = () => {
+  const handleSelectChange = (selected_lang) => {
+    select_box = document.querySelectorAll(`input[type='checkbox'][value='${selected_lang}']`)[0]
+    
+    if (select_box.checked == true) {
+      selectedLanguages.push(selected_lang)
+    } else {
+      const index = selectedLanguages.indexOf(selected_lang);
+      if (index > -1) {
+        selectedLanguages.splice(index, 1);
+      }
+    }
+
     build();
   };
 
@@ -55,7 +69,13 @@
     .attr('class', 'form-check-label')
     .text(d => d)
 
+  const selectInitialLanguages = (languages) => {
+    languages.map((lang) => {
+      document.querySelectorAll(`input[type='checkbox'][value='${lang}']`)[0].checked = true;
+    })
+  }
 
+  selectInitialLanguages(selectedLanguages);
   build();
 
 })();

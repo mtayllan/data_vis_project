@@ -8,7 +8,7 @@ function onlyUnique(value, index, self) {
 
   links.sort((a, b) => (a.value > b.value) ? -1 : 1)
 
-  const uniqueSources = links.map(link => link.source).filter(onlyUnique);
+  const uniqueSources = links.map(link => link.source).filter(onlyUnique).sort();
 
   const facts = crossfilter(links);
   const dimension = facts.dimension(d => d.target);
