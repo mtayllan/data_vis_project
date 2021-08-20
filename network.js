@@ -78,5 +78,25 @@
   node.append('title')
       .text(d => `Grupo ${d.group}: ${d.name} (${d.nodesize})`);
 
+  const onlyUnique = (value, index, self) => {
+    return self.indexOf(value) === index;
+  }
+
+  const legend_g = svg.selectAll(".legend")
+    .data(nodes.map(n => n.group).filter(onlyUnique).sort(function (a, b) {  return a - b;  }))
+    .enter().append("g") 
+    .attr("transform", (d, i) => `translate(220,${i * 20})`); 
+
+    legend_g.append("circle")
+    .attr("cx", 0)
+    .attr("cy", 0)
+    .attr("r", 5)
+    .attr("fill", (d) => colorScale(d));
+
+    legend_g.append("text")
+    .attr("x", 10)
+    .attr("y", 5)
+    .text(d => `Grupo ${d}`);
+
   document.querySelector('#network').append(svg.node());
 })();
