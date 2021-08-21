@@ -12,10 +12,35 @@
   const xScale = d3.scaleOrdinal().domain(names);
   const yScale = d3.scaleLinear().domain([0,  finalGroup.top(1)[0].value]);
 
+  const selectedLanguages = []
+
   const setHightlighted = (tech) => {
-    nodes.forEach(node => {
-      node.highlight = node.name == tech;
-    });
+    selectedTechCircle = document.getElementById(`node-${tech}`);
+
+    if(selectedTechCircle != 'null') {
+      if (selectedLanguages.length >= 1) {
+        selected = document.getElementById(`node-${selectedLanguages[0]}`);
+        selected.style['stroke-width'] = '0px';
+
+        removeLanguage(selectedLanguages[0])
+      }
+
+      selectedLanguages.push(tech)
+      selectedTechCircle.style['stroke-width'] = '2px';
+    }
+  }
+
+  const removeHighlight = (lang) => {
+    selected = document.getElementById(`node-${lang}`);
+    selected.style['stroke-width'] = '0px';
+    removeLanguage(lang)
+  }
+
+  const removeLanguage = (lang) => {
+    const index = selectedLanguages.indexOf(lang);
+    if (index > -1) {
+      selectedLanguages.splice(index, 1);
+    }
   }
 
   let colorScale = d3.scaleOrdinal(d3.schemeCategory10);
@@ -39,6 +64,6 @@
             .group(finalGroup, 'Ganho por genero')
             .xUnits(dc.units.ordinal)
             .addFilterHandler((_, filter) => { setHightlighted(filter); return [filter];})
-            .removeFilterHandler(() => { setHightlighted(''); return [];})
+            .removeFilterHandler((_, filter) => { removeHighlight(filter); return [];})
     dc.renderAll();
 })()

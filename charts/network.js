@@ -33,6 +33,7 @@
     .enter()
     .append('circle')
     .attr('class', 'node')
+    .attr('id', d => `node-${d.name}`)
     .attr('r', d => sizeScale(d.nodesize)/150)
     .attr('fill', d => colorScale(d.group))
     .attr('stroke', 'black')

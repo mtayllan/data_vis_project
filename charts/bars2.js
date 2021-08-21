@@ -42,7 +42,7 @@ function onlyUnique(value, index, self) {
 
     barChart.width(width) // variável padrão do obs, pega larguda da célula
       .height(500)
-      .gap(30)
+      .gap(15)
       .dimension(dimension)
       .margins({ top: 30, right: 50, bottom: 25, left: 40 })
       .x(d3.scaleOrdinal().domain(filteredTargets.slice([0, 15])))
