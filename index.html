@@ -10,36 +10,34 @@
   <title>Trab Vis</title>
 </head>
 <body>
-  <h1>Trabalho de Visualização de Dados</h1>
-
-  <div class="container">
+  <div class="container-fluid text-center">
+    <h1>Trabalho de Visualização de Dados</h1>
     <div class="row">
       <div class="col">
-        <div id="chart"></div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
+        <h2><b>Network de Linguagens que Aparecem Juntas em Tags do Stack Overflow</b></h2>
+        <p>Baseado no Developer Story de desenvolvedores, foi feita a correlação entre as tecnologias. Quanto mais frequentemente duas aparecem juntas, maior a conexão entre elas.</p>
         <div id="network"></div>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <div id="map" style="position: relative;">
-        </div>
+        <h3>Barras</h3>
+        <div id="bars1"></div>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <div id="relationships"></div>
+        <h2><b>Valor numérico da conexção de uma tecnologia com outras</b></h2>
         <div id="selected-dropdown"></div>
+        <div id="bars2"></div>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <div id="history">
-
-        </div>
+        <h2><b>Popularidade das Tecnologias de 2004 a 2020</b></h2>
+        <div id="series-boxes"></div>
+        <div id="series"></div>
+      </div>
     </div>
   </div>
 
@@ -48,9 +46,10 @@
   <script src="https://unpkg.com/dc@4.2.7/dist/dc.js"></script>
   <script src="https://unpkg.com/crossfilter2@1.5.4/crossfilter.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-  <script src="index.js"></script>
-  <script src="map.js"></script>
-  <script src="relationships.js"></script>
-  <script src="history.js"></script>
+  <script src="loadDatasets.js"></script>
+  <script src="charts/network.js"></script>
+  <script src="charts/bars1.js"></script>
+  <script src="charts/bars2.js"></script>
+  <script src="charts/series.js"></script>
 </body>
 </html>
