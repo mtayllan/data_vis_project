@@ -11,7 +11,7 @@
   const outerRadius = innerRadius * 1.1;
 
   const LANGUAGE_NAMES = ["JavaScript", "HTML/CSS", "SQL", "Python", "Java", "C#", "PHP", "TypeScript", "C++", "C", "Go", "Kotlin"]
-  let colors = ["#301E1E", "#083E77", "#342350", "#567235", "#8B161C", "#DF7C00"];
+  let colors = defaultColors;
   const defaultOpacity = 0.8;
 
   ////////////////////////////////////////////////////////////
