@@ -43,7 +43,7 @@
     }
   }
 
-  let colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+  let colorScale = d3.scaleOrdinal(defaultColors);
 
   const groupByName = (name) => nodes.find(no => no.name === name).group;
 

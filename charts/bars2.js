@@ -14,7 +14,7 @@ function onlyUnique(value, index, self) {
   const dimension = facts.dimension(d => d.target);
   const filterTargets = (tech) => links.filter(link => link.source == tech)
                                       .map(link => link.target);
-  const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+  const colorScale = d3.scaleOrdinal(defaultColors);
 
 
   const buildbar = () => {
