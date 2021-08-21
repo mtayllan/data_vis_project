@@ -34,8 +34,6 @@ mongodb,3,50.95
 iphone,4,15.29
 github,5,12.71
 git,5,54.48
-excel,14,12.5
-excel-vba,14,11.38
 entity-framework,2,12.88
 linq,2,8.32
 wcf,2,12.73
@@ -46,7 +44,6 @@ scala,10,27.02
 ajax,6,35.41
 django,1,40.91
 python,1,438.67
-vba,14,16.87
 xcode,4,11.37
 apache,5,13.17
 nginx,5,9.49
@@ -67,13 +64,9 @@ linux,5,108.54
 angular2,7,18.79
 typescript,7,17.53
 codeigniter,6,18.71
-tdd,12,9.45
-agile,12,12.22
 twitter-bootstrap,6,31.05
 web-services,8,18.94
 rest,8,27.08
-testing,11,8.95
-selenium,11,12.7
 android-studio,4,14.79
 redis,3,13.85
 jenkins,9,10.02
@@ -108,8 +101,6 @@ mvc,2,10.92
 haskell,10,11.18
 api,8,8.61
 twitter-bootstrap-3,6,10.13
-regex,13,9.46
-perl,13,19.38
 cloud,9,10.66
 photoshop,6,12.62
 powershell,5,9.85
