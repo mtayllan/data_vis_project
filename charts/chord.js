@@ -1,6 +1,8 @@
-const ready = (data) => {
+(async () => {
+  let matrix = await matrixDataset;
+
   // generate the matrix from csv
-  const matrix = d3.csvParseRows(data).map(i => i.map(j => parseInt(j)));
+  matrix = d3.csvParseRows(matrix).map(i => i.map(j => parseInt(j)));
 
   const margin = { left: 20, top: 20, right: 20, bottom: 20 };
   const width = Math.min(window.innerWidth, 700) - margin.left - margin.right;
@@ -9,7 +11,7 @@ const ready = (data) => {
   const outerRadius = innerRadius * 1.1;
 
   const LANGUAGE_NAMES = ["JavaScript", "HTML/CSS", "SQL", "Python", "Java", "C#", "PHP", "TypeScript", "C++", "C", "Go", "Kotlin"]
-  let colors = ["#301E1E", "#083E77", "#342350", "#567235", "#8B161C", "#DF7C00"];
+  let colors = defaultColors;
   const defaultOpacity = 0.8;
 
   ////////////////////////////////////////////////////////////
@@ -34,7 +36,7 @@ const ready = (data) => {
   ////////////////////// Create SVG //////////////////////////
   ////////////////////////////////////////////////////////////
 
-  const svg = d3.select("#chart").append("svg")
+  const svg = d3.select("#chord").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -193,6 +195,4 @@ const ready = (data) => {
       .transition()
       .style("opacity", defaultOpacity);
   }
-}
-
-d3.text('../datasets/matrix_worked_and_desired.csv').then(ready);
+})();

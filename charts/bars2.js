@@ -14,7 +14,7 @@ function onlyUnique(value, index, self) {
   const dimension = facts.dimension(d => d.target);
   const filterTargets = (tech) => links.filter(link => link.source == tech)
                                       .map(link => link.target);
-  const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+  const colorScale = d3.scaleOrdinal(defaultColors);
 
 
   const buildbar = () => {
@@ -42,7 +42,7 @@ function onlyUnique(value, index, self) {
 
     barChart.width(width) // variável padrão do obs, pega larguda da célula
       .height(500)
-      .gap(30)
+      .gap(15)
       .dimension(dimension)
       .margins({ top: 30, right: 50, bottom: 25, left: 40 })
       .x(d3.scaleOrdinal().domain(filteredTargets.slice([0, 15])))

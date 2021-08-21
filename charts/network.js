@@ -4,7 +4,7 @@
 
   const domain = d3.extent(nodes, d => d.nodesize);
   const sizeScale = d3.scaleLog(domain);
-  const colorScale = d3.scaleOrdinal(d3.schemeCategory10);
+  const colorScale = d3.scaleOrdinal(defaultColors);
 
   const width = 600;
   const height = 600;
@@ -33,6 +33,7 @@
     .enter()
     .append('circle')
     .attr('class', 'node')
+    .attr('id', d => `node-${d.name}`)
     .attr('r', d => sizeScale(d.nodesize)/150)
     .attr('fill', d => colorScale(d.group))
     .attr('stroke', 'black')
@@ -84,8 +85,8 @@
 
   const legend_g = svg.selectAll(".legend")
     .data(nodes.map(n => n.group).filter(onlyUnique).sort(function (a, b) {  return a - b;  }))
-    .enter().append("g") 
-    .attr("transform", (d, i) => `translate(220,${i * 20})`); 
+    .enter().append("g")
+    .attr("transform", (d, i) => `translate(220,${i * 20})`);
 
     legend_g.append("circle")
     .attr("cx", 0)
