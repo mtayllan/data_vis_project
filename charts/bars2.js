@@ -22,7 +22,7 @@ function onlyUnique(value, index, self) {
     const selectedTech = d3.select("#selected-dropdown select").node().value;
     const filteredTargets = filterTargets(selectedTech);
 
-    const width = 1000;
+    const width = 600;
     const group = dimension.group().reduceSum(link => {
       if (link.source == selectedTech) {
         return link.value
@@ -58,8 +58,7 @@ function onlyUnique(value, index, self) {
       })
       .legend(dc.legend().x(width - 250).y(10).itemHeight(13).gap(5))
       .brushOn(false)
-      .group(group, `Relação de ${selectedTech} com outras tecnologias`
-      )
+      .group(group, `Relação de ${selectedTech} com outras tecnologias`)
 
     dc.renderAll()
   }

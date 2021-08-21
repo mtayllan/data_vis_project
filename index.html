@@ -10,36 +10,92 @@
   <title>Trab Vis</title>
 </head>
 <body>
-  <div class="container-fluid text-center">
-    <h1>Trabalho de Visualização de Dados</h1>
-    <div class="row">
-      <div class="col">
-        <h2><b>Network de Linguagens que Aparecem Juntas em Tags do Stack Overflow</b></h2>
-        <p>Baseado no Developer Story de desenvolvedores, foi feita a correlação entre as tecnologias. Quanto mais frequentemente duas aparecem juntas, maior a conexão entre elas.</p>
+  <main>
+    <div class="px-4 py-5 my-5 text-center">
+      <img class="d-block mx-auto mb-4" src="icon.png" alt="" width="72" height="72">
+      <h1 class="display-5 fw-bold">Linguagens de Programação: popularidade, tendências e correlações.</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">
+          Vamos conhecer as linguagens mais populares, seu relacionamento com outras tecnologias e o ecossistema ao seu redor.
+        </p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+          <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Começar</button>
+          <button type="button" class="btn btn-outline-secondary btn-lg px-4">Créditos</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="b-divider"></div>
+
+    <div class="px-4 pt-5 my-5 text-center border-bottom">
+      <h1 class="display-4 fw-bold">Rede de Tecnologias</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">
+          Rede de Linguagens que e como se relacionam através de outras tecnologias.
+          <br>
+          Baseado no Developer Story de desenvolvedores, foi feita a correlação entre as tecnologias. Quanto mais frequentemente duas aparecem juntas, maior a conexão entre elas.
+        </p>
+      </div>
+      <div class="container px-5">
         <div id="network"></div>
       </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <h3>Barras</h3>
+
+    <div class="b-divider"></div>
+
+    <div class="bg-dark text-secondary px-4 py-5 text-center">
+      <div class="py-5">
+        <h1 class="display-5 fw-bold text-white">Tags que mais aparecem no Stackoverflow</h1>
+        <div class="col-lg-6 mx-auto">
+          <p class="fs-5 mb-4">
+            Abaixo podemos ver quantas vezes uma tecnologia foi mencionada em questões feitas no
+            Stackoverflow em 202x
+          </p>
+        </div>
         <div id="bars1"></div>
       </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <h2><b>Valor numérico da conexção de uma tecnologia com outras</b></h2>
-        <div id="selected-dropdown"></div>
-        <div id="bars2"></div>
+
+    <div class="b-divider"></div>
+
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+      <div class="row align-items-center g-lg-5 py-5">
+        <div class="col-lg-5 text-center text-lg-start">
+          <h1 class="display-6 fw-bold lh-1 mb-3">Nível de relacionamento de uma tecnologia com outra</h1>
+          <p class="col-lg-10 fs-5">
+            Ao lado podemos ver o quanto a tecnologia selecionada se relaciona com outras.
+            Isso pode mostrar que uma tecnologia usa uma determinada linguagem ou várias linguagens.
+          </p>
+          <div id="selected-dropdown"></div>
+        </div>
+        <div class="col-md-10 mx-auto col-lg-7">
+          <div id="bars2"></div>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <h2><b>Popularidade das Tecnologias de 2004 a 2020</b></h2>
+
+    <div class="b-divider"></div>
+
+    <div class="px-4 pt-5 my-5 text-center border-bottom">
+      <h1 class="display-4 fw-bold">Popularidade das linguagens (2004-2020)</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">
+          Selecione até 5 linguagens abaixo e poderá ver seu nível de popularidade ao longo
+          dos anos, se está em uma tendencia de queda, crescimento ou se está estável.
+        </p>
+      </div>
+      <div class="container p-5">
         <div id="series-boxes"></div>
         <div id="series"></div>
       </div>
     </div>
-  </div>
+
+    <div class="b-divider"></div>
+
+    <div class="bg-dark text-secondary px-4 py-5 text-center">
+      créditos aqui
+    </div>
+  </main>
 
   <script src="https://unpkg.com/topojson@3"></script>
   <script src="https://d3js.org/d3.v5.min.js"></script>
