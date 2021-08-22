@@ -1,3 +1,4 @@
+bootstrap.Tooltip.Default.allowList.b = ['style'];
 (async () => {
   const matrix = await matrixDataset;
 
@@ -158,6 +159,28 @@
     }
   }
 
+  const popText = (d) => {
+    if (d.source.index === d.target.index) {
+      return `
+        ${d.source.value}</b> que trabalham com
+        <b style='color:${colors(d.source.index)}'>${LANGUAGE_NAMES[d.source.index]}</b>
+        querem continuar trabalhando com
+        <b style='color:${colors(d.source.index)}'>${LANGUAGE_NAMES[d.source.index]}</b>
+      `
+    }
+    return `
+      <b>${d.source.value}</b> que trabalham com
+      <b style='color:${colors(d.source.index)}'>${LANGUAGE_NAMES[d.source.index]}</b>
+      querem trabalhar com
+      <b style='color:${colors(d.target.index)}'>${LANGUAGE_NAMES[d.target.index]}</b>
+      </br>
+      <b>${d.target.value}</b> que trabalham com
+      <b style='color:${colors(d.target.index)}'>${LANGUAGE_NAMES[d.target.index]}</b>
+      querem trabalhar com
+      <b style='color:${colors(d.source.index)}'>${LANGUAGE_NAMES[d.source.index]}</b>
+    `
+  }
+
   //Highlight hovered over chord
   function mouseoverChord(d) {
     //Decrease opacity to all
@@ -174,13 +197,7 @@
       container: 'body',
       trigger: 'hover',
       html: true,
-      content: () => `
-        <p>
-          <b>${d.source.value}</b> que trabalham com ${LANGUAGE_NAMES[d.source.index]} querem trabalhar com ${LANGUAGE_NAMES[d.target.index]}
-          </br>
-          <b>${d.target.value}</b> que trabalham com ${LANGUAGE_NAMES[d.target.index]} querem trabalhar com ${LANGUAGE_NAMES[d.source.index]}
-        </p>
-      `
+      content: popText(d),
     })
     popover.show();
   }
