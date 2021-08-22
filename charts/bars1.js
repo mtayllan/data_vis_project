@@ -44,12 +44,6 @@
   }
 
   const groupByName = (name) => nodes.find(no => no.name === name).group;
-  const getColor = (d) => {
-    console.log({groupByName});
-    console.log(d);
-
-    return defaultOrdinalColorScale(groupByName(d.key));
-  }
 
   const barChart = dc.barChart(document.querySelector("#bars1"))
     barChart.width(1000)
@@ -60,7 +54,7 @@
             .x(xScale)
             .y(yScale)
             .renderHorizontalGridLines(true)
-            .colorCalculator(getColor)
+            .colorCalculator(d => defaultOrdinalColorScale(groupByName(d.key)))
             .group(finalGroup, 'Ganho por genero')
             .xUnits(dc.units.ordinal)
             .addFilterHandler((_, filter) => { setHightlighted(filter); return [filter];})
