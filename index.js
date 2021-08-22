@@ -2,6 +2,7 @@ const nodesDataset = d3.csv('./datasets/stack_network_nodes.csv', row => ({...ro
 const linksDataset = d3.csv('./datasets/stack_network_links.csv', row => ({...row, value: parseFloat(row.value)}));
 const linksDataset2 = d3.csv('./datasets/stack_network_links.csv', row => ({...row, value: parseFloat(row.value)}));
 const tagsDataset = d3.csv('./datasets/tags.csv')
+const wordkedWithDataset = d3.csv('./datasets/stackoverflow_countries_worked_languages_age_sexuality.csv')
 const popularityDataset = d3.csv('./datasets/popularity.csv').then(data => {
   const dateParser = d3.utcParse('%B %Y');
   data.forEach(item => {
