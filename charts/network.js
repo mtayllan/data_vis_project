@@ -5,7 +5,7 @@
   const domain = d3.extent(nodes, d => d.nodesize);
   const sizeScale = d3.scaleLog(domain);
 
-  const width = 600;
+  const width = 800;
   const height = 600;
 
   const svg = d3.select('#network').append('svg')
@@ -17,7 +17,6 @@
       .force("link", d3.forceLink(links).id(d => d.name))
       .force("charge", d3.forceManyBody().distanceMax(100))
       .force("center", d3.forceCenter());
-
 
   const link = svg.append('g')
     .selectAll('line')
@@ -81,7 +80,7 @@
   const legend = svg.selectAll(".legend")
     .data(nodes.map(n => n.group).filter(onlyUnique).sort(function (a, b) { return a - b; }))
     .enter().append("g")
-    .attr("transform", (d, i) => `translate(220,${i * 20})`);
+    .attr("transform", (d, i) => `translate(210,${i * 20})`);
 
   legend.append("circle")
     .attr("cx", 0)
@@ -92,7 +91,7 @@
   legend.append("text")
     .attr("x", 10)
     .attr("y", 5)
-    .text(d => `Grupo ${d}`);
+    .text(d => groupsMap[d]);
 
   document.querySelector('#network').append(svg.node());
 })();

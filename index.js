@@ -30,3 +30,15 @@ class CustomRowChart extends dc.RowChart {
     this._rowCssClass = 'dcrow';
   }
 }
+
+const groupsMap = {
+  1: 'Desktop & Data Science',
+  2: 'Microsoft Related',
+  3: 'Web and Databases',
+  4: 'Mobile',
+  5: 'Dev Environment',
+  6: 'Web',
+  8: 'Java',
+  9: 'Infrastructure',
+  10: 'Analytics'
+}

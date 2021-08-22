@@ -61,8 +61,8 @@ maven,8,10.3
 jsp,8,13.78
 bash,5,23.91
 linux,5,108.54
-angular2,7,18.79
-typescript,7,17.53
+angular2,6,18.79
+typescript,6,17.53
 codeigniter,6,18.71
 twitter-bootstrap,6,31.05
 web-services,8,18.94
@@ -72,7 +72,7 @@ redis,3,13.85
 jenkins,9,10.02
 docker,9,22.85
 amazon-web-services,9,30.05
-angular,7,29.09
+angular,6,29.09
 osx,4,12.58
 machine-learning,1,44.21
 qt,1,10.53
