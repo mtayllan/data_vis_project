@@ -5,9 +5,6 @@
   const facts = crossfilter(tags);
   const dimension = facts.dimension(d => d.name);
   const group = dimension.group().reduceSum(d => d.count);
-  const names = group.top(Infinity).map(d => d.key);
-
-  const xScale = d3.scaleLinear().domain([0, group.top(1)[0].value]);
 
   const selectedLanguages = []
 
@@ -46,17 +43,14 @@
   rowChart.width(800)
     .height(400)
     .margins({ top: 30, right: 50, bottom: 25, left: 100 })
-    .x(xScale)
-    .xAxis(d3.axisTop())
     .elasticX(true)
     .dimension(dimension)
     .group(group)
     .cap(15)
-    // .renderHorizontalGridLines(true)
-    // .colorCalculator(d => defaultOrdinalColorScale(groupByName(d.key)))
-    // .xUnits(dc.units.ordinal)
-    // .addFilterHandler((_, filter) => { setHightlighted(filter); return [filter]; })
-    // .removeFilterHandler((_, filter) => { removeHighlight(filter); return []; })
+    .othersGrouper(null)
+    .colorCalculator(d => defaultOrdinalColorScale(groupByName(d.key)))
+    .addFilterHandler((_, filter) => { setHightlighted(filter); return [filter]; })
+    .removeFilterHandler((_, filter) => { removeHighlight(filter); return []; })
 
   rowChart.render();
 })()
