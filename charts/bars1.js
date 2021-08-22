@@ -43,13 +43,13 @@
     }
   }
 
-  let colorScale = d3.scaleOrdinal(defaultColors);
-
   const groupByName = (name) => nodes.find(no => no.name === name).group;
+  const getColor = (d) => {
+    console.log({groupByName});
+    console.log(d);
 
-  // NÃO TIRAR
-  // esse console.log é necessário pro javascript esperar terminar de rodar pra depois mostrar os gráficos
-  console.log(nodes.map( n => colorScale(groupByName(n.name)) ))
+    return defaultOrdinalColorScale(groupByName(d.key));
+  }
 
   const barChart = dc.barChart(document.querySelector("#bars1"))
     barChart.width(1000)
@@ -60,7 +60,7 @@
             .x(xScale)
             .y(yScale)
             .renderHorizontalGridLines(true)
-            .colorCalculator(d => colorScale(groupByName(d.key)))
+            .colorCalculator(getColor)
             .group(finalGroup, 'Ganho por genero')
             .xUnits(dc.units.ordinal)
             .addFilterHandler((_, filter) => { setHightlighted(filter); return [filter];})

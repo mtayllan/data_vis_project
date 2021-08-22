@@ -40,3 +40,4 @@ const popularityDataset = d3.csv('./datasets/popularity.csv').then(data => {
 const matrixDataset = d3.text('../datasets/matrix_worked_and_desired.csv');
 
 const defaultColors = d3.schemeTableau10;
+const defaultOrdinalColorScale = d3.scaleOrdinal(defaultColors);

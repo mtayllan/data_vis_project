@@ -14,8 +14,6 @@ function onlyUnique(value, index, self) {
   const dimension = facts.dimension(d => d.target);
   const filterTargets = (tech) => links.filter(link => link.source == tech)
                                       .map(link => link.target);
-  const colorScale = d3.scaleOrdinal(defaultColors);
-
 
   const buildbar = () => {
     const barChart = dc.barChart(document.querySelector("#bars2"));
@@ -36,11 +34,7 @@ function onlyUnique(value, index, self) {
       }
     };
 
-    // NÃO TIRAR
-    // esse console.log é necessário pro javascript esperar terminar de rodar pra depois mostrar os gráficos
-    console.log(nodes.map( n => colorScale(groupByName(n.name)) ))
-
-    barChart.width(width) // variável padrão do obs, pega larguda da célula
+    barChart.width(width)
       .height(500)
       .gap(15)
       .dimension(dimension)
@@ -53,7 +47,7 @@ function onlyUnique(value, index, self) {
       .renderHorizontalGridLines(true)
       .colorCalculator(d => {
         if(typeof groupByName(d.key) !== 'undefined') {
-          return colorScale(groupByName(d.key))
+          return defaultOrdinalColorScale(groupByName(d.key))
         } else {
           return '#aaaa'
         }

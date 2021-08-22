@@ -4,7 +4,6 @@
 
   const domain = d3.extent(nodes, d => d.nodesize);
   const sizeScale = d3.scaleLog(domain);
-  const colorScale = d3.scaleOrdinal(defaultColors);
 
   const width = 600;
   const height = 600;
@@ -35,7 +34,7 @@
     .attr('class', 'node')
     .attr('id', d => `node-${d.name}`)
     .attr('r', d => sizeScale(d.nodesize)/150)
-    .attr('fill', d => colorScale(d.group))
+    .attr('fill', d => defaultOrdinalColorScale(d.group))
     .attr('stroke', 'black')
     .attr('stroke-width', d => d.highlight ? 2 : 0);
 
@@ -92,7 +91,7 @@
     .attr("cx", 0)
     .attr("cy", 0)
     .attr("r", 5)
-    .attr("fill", (d) => colorScale(d));
+    .attr("fill", (d) => defaultOrdinalColorScale(d));
 
     legend_g.append("text")
     .attr("x", 10)
