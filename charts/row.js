@@ -47,10 +47,33 @@
     .dimension(dimension)
     .group(group)
     .cap(15)
-    .ordinalColors([defaultColors[0]])
+    .colorCalculator(d => defaultOrdinalColorScale(groupByName(d.key)))
     .othersGrouper(null)
     .addFilterHandler((_, filter) => { setHightlighted(filter); return [filter]; })
     .removeFilterHandler((_, filter) => { removeHighlight(filter); return []; })
 
   rowChart.render();
+
+  const svg = d3.select('#top-row-legend')
+    .append('svg')
+    .attr('width', 565)
+    .attr('height', 100);
+
+  const legend = svg.selectAll(".legend")
+    .data(await getGroups())
+    .enter().append("g")
+    .attr("transform", (_, i) => `translate(${10 + (i % 3) * 200},${20 + Math.floor(i/3) * 30})`);
+
+  legend.append("circle")
+    .attr("cx", 0)
+    .attr("cy", 0)
+    .attr("r", 5)
+    .attr("fill", (d) => defaultOrdinalColorScale(d));
+
+  legend.append("text")
+    .attr("x", 10)
+    .attr("y", 5)
+    .text(d => groupsMap[d])
+    .attr('fill', 'white')
+
 })()
