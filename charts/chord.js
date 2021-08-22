@@ -127,6 +127,7 @@
     .attr("dy", d => (d.endAngle > 90 * Math.PI / 180 & d.startAngle < 270 * Math.PI / 180 ? 25 : -16))
     .append("textPath")
     .attr("startOffset", "50%")
+    .attr("fill", '#fff')
     .style("text-anchor", "middle")
     .attr("xlink:href", (_, i) => `#arc${i}`)
     .text((_, i) => LANGUAGE_NAMES[i]);
