@@ -47,7 +47,7 @@
     .dimension(dimension)
     .group(group)
     .cap(15)
-    .ordinalColors([defaultOrdinalColorScale(0)])
+    .ordinalColors([defaultColors[0]])
     .othersGrouper(null)
     .addFilterHandler((_, filter) => { setHightlighted(filter); return [filter]; })
     .removeFilterHandler((_, filter) => { removeHighlight(filter); return []; })

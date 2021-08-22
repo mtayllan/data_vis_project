@@ -42,3 +42,8 @@ const groupsMap = {
   9: 'Infrastructure',
   10: 'Analytics'
 }
+
+const getGroups = async () => {
+  const nodes = await nodesDataset;
+  return nodes.map(n => n.group).filter(onlyUnique).sort(function (a, b) { return a - b; });
+}

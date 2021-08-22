@@ -77,10 +77,11 @@
   node.append('title')
     .text(d => `Grupo ${d.group}: ${d.name} (${d.nodesize})`);
 
+
   const legend = svg.selectAll(".legend")
-    .data(nodes.map(n => n.group).filter(onlyUnique).sort(function (a, b) { return a - b; }))
+    .data(await getGroups())
     .enter().append("g")
-    .attr("transform", (d, i) => `translate(210,${i * 20})`);
+    .attr("transform", (_, i) => `translate(210,${i * 20})`);
 
   legend.append("circle")
     .attr("cx", 0)

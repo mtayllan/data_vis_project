@@ -48,9 +48,8 @@
           return '#aaaa'
         }
       })
-      .legend(dc.legend().x(width - 250).y(10).itemHeight(13).gap(5))
       .brushOn(false)
-      .group(group, `Relação de ${selectedTech} com outras tecnologias`)
+      .group(group)
 
     dc.renderAll()
   }
@@ -64,6 +63,28 @@
     .data(uniqueSources).enter()
     .append('option')
     .text(d => d);
+
+  const svg = d3.select('#bars-legend')
+    .append('svg')
+    .attr('width', '100%')
+    .attr('height', 100);
+
+  const legend = svg.selectAll(".legend")
+    .data(await getGroups())
+    .enter().append("g")
+    .attr("transform", (_, i) => `translate(${10 + (i % 3) * 200},${20 + Math.floor(i/3) * 30})`);
+
+  legend.append("circle")
+    .attr("cx", 0)
+    .attr("cy", 0)
+    .attr("r", 5)
+    .attr("fill", (d) => defaultOrdinalColorScale(d));
+
+  legend.append("text")
+    .attr("x", 10)
+    .attr("y", 5)
+    .text(d => groupsMap[d]);
+
 
   buildbar();
 })();
