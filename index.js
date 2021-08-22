@@ -1,7 +1,7 @@
 const nodesDataset = d3.csv('./datasets/stack_network_nodes.csv', row => ({...row, nodesize: parseFloat(row.nodesize)}));
 const linksDataset = d3.csv('./datasets/stack_network_links.csv', row => ({...row, value: parseFloat(row.value)}));
 const linksDataset2 = d3.csv('./datasets/stack_network_links.csv', row => ({...row, value: parseFloat(row.value)}));
-const tagsDataset = d3.csv('./datasets/tags.csv')
+const tagsDataset = d3.csv('./datasets/tags.csv', row => ({...row, count: parseInt(row.count)}))
 const popularityDataset = d3.csv('./datasets/popularity.csv').then(data => {
   const dateParser = d3.utcParse('%B %Y');
   data.forEach(item => {
@@ -21,4 +21,11 @@ const defaultOrdinalColorScale = d3.scaleOrdinal(defaultColors);
 
 function onlyUnique(value, index, self) {
   return self.indexOf(value) === index;
+}
+
+class CustomRowChart extends dc.RowChart {
+  constructor(parent, chartGroup) {
+    super(parent, chartGroup)
+    this._rowCssClass = 'dcrow';
+  }
 }
