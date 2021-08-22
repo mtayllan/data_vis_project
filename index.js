@@ -1,6 +1,7 @@
 const nodesDataset = d3.csv('./datasets/stack_network_nodes.csv', row => ({...row, nodesize: parseFloat(row.nodesize)}));
 const linksDataset = d3.csv('./datasets/stack_network_links.csv', row => ({...row, value: parseFloat(row.value)}));
 const linksDataset2 = d3.csv('./datasets/stack_network_links.csv', row => ({...row, value: parseFloat(row.value)}));
+const wordkedWithDataset = d3.csv('./datasets/stackoverflow_countries_worked_languages_age_sexuality.csv')
 const tagsDataset = d3.csv('./datasets/tags.csv', row => ({...row, count: parseInt(row.count)}))
 const popularityDataset = d3.csv('./datasets/popularity.csv').then(data => {
   const dateParser = d3.utcParse('%B %Y');
@@ -28,4 +29,16 @@ class CustomRowChart extends dc.RowChart {
     super(parent, chartGroup)
     this._rowCssClass = 'dcrow';
   }
+}
+
+const groupsMap = {
+  1: 'Desktop & Data Science',
+  2: 'Microsoft Related',
+  3: 'Web and Databases',
+  4: 'Mobile',
+  5: 'Dev Environment',
+  6: 'Web',
+  8: 'Java',
+  9: 'Infrastructure',
+  10: 'Analytics'
 }

@@ -47,8 +47,8 @@
     .dimension(dimension)
     .group(group)
     .cap(15)
+    .ordinalColors([defaultOrdinalColorScale(0)])
     .othersGrouper(null)
-    .colorCalculator(d => defaultOrdinalColorScale(groupByName(d.key)))
     .addFilterHandler((_, filter) => { setHightlighted(filter); return [filter]; })
     .removeFilterHandler((_, filter) => { removeHighlight(filter); return []; })
 
