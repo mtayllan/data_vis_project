@@ -62,7 +62,7 @@ function onlyUnique(value, index, self) {
 
   d3.select('#selected-dropdown')
     .append('select')
-    .attr('class','select')
+    .attr('class','select form-select')
     .on('change', buildbar)
     .selectAll('option')
     .data(uniqueSources).enter()
