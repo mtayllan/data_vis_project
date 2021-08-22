@@ -1,7 +1,3 @@
-function onlyUnique(value, index, self) {
-  return self.indexOf(value) === index;
-}
-
 (async () => {
   const links = await linksDataset2;
   const nodes = await nodesDataset;

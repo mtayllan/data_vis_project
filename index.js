@@ -41,3 +41,7 @@ const matrixDataset = d3.text('../datasets/matrix_worked_and_desired.csv');
 
 const defaultColors = d3.schemeTableau10;
 const defaultOrdinalColorScale = d3.scaleOrdinal(defaultColors);
+
+function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}

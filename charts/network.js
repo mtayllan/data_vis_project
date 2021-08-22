@@ -78,10 +78,6 @@
   node.append('title')
       .text(d => `Grupo ${d.group}: ${d.name} (${d.nodesize})`);
 
-  const onlyUnique = (value, index, self) => {
-    return self.indexOf(value) === index;
-  }
-
   const legend_g = svg.selectAll(".legend")
     .data(nodes.map(n => n.group).filter(onlyUnique).sort(function (a, b) {  return a - b;  }))
     .enter().append("g")
