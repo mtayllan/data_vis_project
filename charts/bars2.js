@@ -44,9 +44,11 @@ function onlyUnique(value, index, self) {
       .height(500)
       .gap(15)
       .dimension(dimension)
-      .margins({ top: 30, right: 50, bottom: 25, left: 40 })
+      .margins({ top: 30, right: 50, bottom: 50, left: 40 })
       .x(d3.scaleOrdinal().domain(filteredTargets.slice([0, 15])))
       .xUnits(dc.units.ordinal)
+      .yAxisLabel(`Frequência com ${selectedTech}`)
+      .xAxisLabel(`Tecnologia`)
       .colorAccessor(d => d.key)
       .renderHorizontalGridLines(true)
       .colorCalculator(d => {
