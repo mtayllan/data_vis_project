@@ -33,8 +33,8 @@
     .margins({top: 20, left: 10, right: 10, bottom: 20})
     .othersGrouper(null)
     .transitionDuration(750)
-    .colorAccessor((_d, i) => i)
-    .ordinalColors([defaultOrdinalColorScale(0)])
+    .colorAccessor((_, i) => i)
+    .ordinalColors([defaultColors[0]])
     .dimension(countryDim)
     .group(countryDim.group().reduceCount())
     .renderLabel(true)
@@ -42,7 +42,7 @@
     .cap(12)
     .elasticX(true)
     .xAxis().ticks(4)
-    
+
   rowChartCountry.on('preRedraw', function(chart) {
     chart.calculateColorDomain();
   });
