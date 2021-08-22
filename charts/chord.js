@@ -1,8 +1,5 @@
 (async () => {
-  let matrix = await matrixDataset;
-
-  // generate the matrix from csv
-  matrix = d3.csvParseRows(matrix).map(i => i.map(j => parseInt(j)));
+  const matrix = await matrixDataset;
 
   const margin = { left: 20, top: 20, right: 20, bottom: 20 };
   const width = Math.min(window.innerWidth, 700) - margin.left - margin.right;
