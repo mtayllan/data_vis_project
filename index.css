@@ -45,3 +45,12 @@ line.link {
 @media (min-width: 992px) {
   .rounded-lg-3 { border-radius: .3rem; }
 }
+
+.popover {
+  background: rgba(var(--bs-dark-rgb), 1) !important;
+  border: solid 1px white;
+}
+
+.popover-body {
+  color: white !important;
+}

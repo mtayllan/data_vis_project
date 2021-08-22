@@ -10,14 +10,14 @@
   const names = finalGroup.top(Infinity).map(d => d.key);
 
   const xScale = d3.scaleOrdinal().domain(names);
-  const yScale = d3.scaleLinear().domain([0,  finalGroup.top(1)[0].value]);
+  const yScale = d3.scaleLinear().domain([0, finalGroup.top(1)[0].value]);
 
   const selectedLanguages = []
 
   const setHightlighted = (tech) => {
     selectedTechCircle = document.getElementById(`node-${tech}`);
 
-    if(selectedTechCircle != 'null') {
+    if (selectedTechCircle != 'null') {
       if (selectedLanguages.length >= 1) {
         selected = document.getElementById(`node-${selectedLanguages[0]}`);
         selected.style['stroke-width'] = '0px';
@@ -43,27 +43,21 @@
     }
   }
 
-  let colorScale = d3.scaleOrdinal(defaultColors);
-
   const groupByName = (name) => nodes.find(no => no.name === name).group;
 
-  // NÃO TIRAR
-  // esse console.log é necessário pro javascript esperar terminar de rodar pra depois mostrar os gráficos
-  console.log(nodes.map( n => colorScale(groupByName(n.name)) ))
-
   const barChart = dc.barChart(document.querySelector("#bars1"))
-    barChart.width(1000)
-            .height(400)
-            .gap(30)
-            .dimension(finalDimension)
-            .margins({top: 30, right: 50, bottom: 25, left: 100})
-            .x(xScale)
-            .y(yScale)
-            .renderHorizontalGridLines(true)
-            .colorCalculator(d => colorScale(groupByName(d.key)))
-            .group(finalGroup, 'Ganho por genero')
-            .xUnits(dc.units.ordinal)
-            .addFilterHandler((_, filter) => { setHightlighted(filter); return [filter];})
-            .removeFilterHandler((_, filter) => { removeHighlight(filter); return [];})
-    dc.renderAll();
+  barChart.width(1000)
+    .height(400)
+    .gap(30)
+    .dimension(finalDimension)
+    .margins({ top: 30, right: 50, bottom: 25, left: 100 })
+    .x(xScale)
+    .y(yScale)
+    .renderHorizontalGridLines(true)
+    .colorCalculator(d => defaultOrdinalColorScale(groupByName(d.key)))
+    .group(finalGroup, 'Ganho por genero')
+    .xUnits(dc.units.ordinal)
+    .addFilterHandler((_, filter) => { setHightlighted(filter); return [filter]; })
+    .removeFilterHandler((_, filter) => { removeHighlight(filter); return []; })
+  dc.renderAll();
 })()

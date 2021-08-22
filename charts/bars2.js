@@ -1,7 +1,3 @@
-function onlyUnique(value, index, self) {
-  return self.indexOf(value) === index;
-}
-
 (async () => {
   const links = await linksDataset2;
   const nodes = await nodesDataset;
@@ -13,9 +9,7 @@ function onlyUnique(value, index, self) {
   const facts = crossfilter(links);
   const dimension = facts.dimension(d => d.target);
   const filterTargets = (tech) => links.filter(link => link.source == tech)
-                                      .map(link => link.target);
-  const colorScale = d3.scaleOrdinal(defaultColors);
-
+    .map(link => link.target);
 
   const buildbar = () => {
     const barChart = dc.barChart(document.querySelector("#bars2"));
@@ -31,16 +25,12 @@ function onlyUnique(value, index, self) {
     });
 
     const groupByName = (name) => {
-      if(typeof name !== 'undefined') {
+      if (typeof name !== 'undefined') {
         return nodes.find(no => no.name === name).group
       }
     };
 
-    // NÃO TIRAR
-    // esse console.log é necessário pro javascript esperar terminar de rodar pra depois mostrar os gráficos
-    console.log(nodes.map( n => colorScale(groupByName(n.name)) ))
-
-    barChart.width(width) // variável padrão do obs, pega larguda da célula
+    barChart.width(width)
       .height(500)
       .gap(15)
       .dimension(dimension)
@@ -52,8 +42,8 @@ function onlyUnique(value, index, self) {
       .colorAccessor(d => d.key)
       .renderHorizontalGridLines(true)
       .colorCalculator(d => {
-        if(typeof groupByName(d.key) !== 'undefined') {
-          return colorScale(groupByName(d.key))
+        if (typeof groupByName(d.key) !== 'undefined') {
+          return defaultOrdinalColorScale(groupByName(d.key))
         } else {
           return '#aaaa'
         }
@@ -68,7 +58,7 @@ function onlyUnique(value, index, self) {
 
   d3.select('#selected-dropdown')
     .append('select')
-    .attr('class','select')
+    .attr('class', 'select form-select')
     .on('change', buildbar)
     .selectAll('option')
     .data(uniqueSources).enter()

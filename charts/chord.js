@@ -1,8 +1,6 @@
+bootstrap.Tooltip.Default.allowList.b = ['style'];
 (async () => {
-  let matrix = await matrixDataset;
-
-  // generate the matrix from csv
-  matrix = d3.csvParseRows(matrix).map(i => i.map(j => parseInt(j)));
+  const matrix = await matrixDataset;
 
   const margin = { left: 20, top: 20, right: 20, bottom: 20 };
   const width = Math.min(window.innerWidth, 700) - margin.left - margin.right;
@@ -107,7 +105,7 @@
 
         //Build up the new arc notation, set the sweep-flag to 0
         newArc = `M${newStart}A${middleSec}0 0 0 ${newEnd}`;
-      }//if
+      }
 
       //Create a new invisible arc that the text can flow along
       svg.append("path")
@@ -127,6 +125,8 @@
     .attr("dy", d => (d.endAngle > 90 * Math.PI / 180 & d.startAngle < 270 * Math.PI / 180 ? 25 : -16))
     .append("textPath")
     .attr("startOffset", "50%")
+    .attr("fill", '#fff')
+    .style('font-size', (_, i) => LANGUAGE_NAMES[i] == 'Kotlin' ? '10.7px' : 'inherit')
     .style("text-anchor", "middle")
     .attr("xlink:href", (_, i) => `#arc${i}`)
     .text((_, i) => LANGUAGE_NAMES[i]);
@@ -159,6 +159,28 @@
     }
   }
 
+  const popText = (d) => {
+    if (d.source.index === d.target.index) {
+      return `
+        ${d.source.value}</b> que trabalham com
+        <b style='color:${colors(d.source.index)}'>${LANGUAGE_NAMES[d.source.index]}</b>
+        querem continuar trabalhando com
+        <b style='color:${colors(d.source.index)}'>${LANGUAGE_NAMES[d.source.index]}</b>
+      `
+    }
+    return `
+      <b>${d.source.value}</b> que trabalham com
+      <b style='color:${colors(d.source.index)}'>${LANGUAGE_NAMES[d.source.index]}</b>
+      querem trabalhar com
+      <b style='color:${colors(d.target.index)}'>${LANGUAGE_NAMES[d.target.index]}</b>
+      </br>
+      <b>${d.target.value}</b> que trabalham com
+      <b style='color:${colors(d.target.index)}'>${LANGUAGE_NAMES[d.target.index]}</b>
+      querem trabalhar com
+      <b style='color:${colors(d.source.index)}'>${LANGUAGE_NAMES[d.source.index]}</b>
+    `
+  }
+
   //Highlight hovered over chord
   function mouseoverChord(d) {
     //Decrease opacity to all
@@ -175,13 +197,7 @@
       container: 'body',
       trigger: 'hover',
       html: true,
-      content: () => `
-        <p>
-          <b>${d.source.value}</b> que trabalham com ${LANGUAGE_NAMES[d.source.index]} querem trabalhar com ${LANGUAGE_NAMES[d.target.index]}
-          </br>
-          <b>${d.target.value}</b> que trabalham com ${LANGUAGE_NAMES[d.target.index]} querem trabalhar com ${LANGUAGE_NAMES[d.source.index]}
-        </p>
-      `
+      content: popText(d),
     })
     popover.show();
   }

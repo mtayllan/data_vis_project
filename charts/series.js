@@ -10,8 +10,6 @@
 
   languages.sort();
 
-  const width = 600;
-
   const removeLanguage = (lang) => {
     const index = selectedLanguages.indexOf(lang);
     if (index > -1) {
@@ -20,19 +18,32 @@
   }
 
   const compositeChart = dc.compositeChart(document.querySelector("#series"));
-  compositeChart.width(width)
-      .height(400)
-      .margins({ top: 50, right: 50, bottom: 50, left: 40 })
-      .dimension(dateDim)
-      .x(xScale)
-      .xUnits(d3.timeDays)
-      .y(d3.scaleLinear().domain([0, 33]))
-      .yAxisLabel('% de Popularidade')
-      .xAxisLabel('Tempo')
-      .renderHorizontalGridLines(true)
-      .legend(dc.legend().x(width - 200).y(5).itemHeight(13).gap(5))
-      .brushOn(false)
-      .compose([]);
+  const dateRangeChart = dc.barChart(document.querySelector("#date-range-selector"));
+  compositeChart.width(990)
+    .height(400)
+    .margins({ top: 50, right: 50, bottom: 50, left: 40 })
+    .dimension(dateDim)
+    .x(xScale)
+    .xUnits(d3.timeDays)
+    .y(d3.scaleLinear().domain([0, 33]))
+    .yAxisLabel('% de Popularidade')
+    .xAxisLabel('Tempo')
+    .renderHorizontalGridLines(true)
+    .legend(dc.legend().x(990 - 100).y(5).itemHeight(13).gap(5))
+    .brushOn(false)
+    .rangeChart(dateRangeChart)
+    .compose([]);
+
+  dateRangeChart.width(990)
+    .height(40)
+    .margins({ top: 0, right: 50, bottom: 20, left: 40 })
+    .dimension(dateDim)
+    .group(dateDim.group().reduceSum(d => d['Ruby']))
+    .centerBar(true)
+    .gap(1)
+    .x(d3.scaleTime().domain([new Date(2004, 0, 1), new Date(2021, 5, 31)]))
+    .alwaysUseRounding(true)
+    .xUnits(d3.timeDays);
 
   const build = () => {
     const tops = [];
@@ -57,7 +68,7 @@
     select_box = document.querySelectorAll(`input[type='checkbox'][value='${selected_lang}']`)[0]
 
     if (select_box.checked == true) {
-      if(document.querySelectorAll('input[type="checkbox"]:checked').length > 5) {
+      if (document.querySelectorAll('input[type="checkbox"]:checked').length > 5) {
         alert('Você só pode selecionar até 5 linguagens!')
         select_box.checked = false
       } else {
