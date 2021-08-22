@@ -107,7 +107,7 @@
 
         //Build up the new arc notation, set the sweep-flag to 0
         newArc = `M${newStart}A${middleSec}0 0 0 ${newEnd}`;
-      }//if
+      }
 
       //Create a new invisible arc that the text can flow along
       svg.append("path")
@@ -128,6 +128,7 @@
     .append("textPath")
     .attr("startOffset", "50%")
     .attr("fill", '#fff')
+    .style('font-size', (_, i) => LANGUAGE_NAMES[i] == 'Kotlin' ? '10.7px' : 'inherit')
     .style("text-anchor", "middle")
     .attr("xlink:href", (_, i) => `#arc${i}`)
     .text((_, i) => LANGUAGE_NAMES[i]);
