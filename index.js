@@ -1,7 +1,14 @@
 const nodesDataset = d3.csv('./datasets/stack_network_nodes.csv', row => ({...row, nodesize: parseFloat(row.nodesize)}));
 const linksDataset = d3.csv('./datasets/stack_network_links.csv', row => ({...row, value: parseFloat(row.value)}));
 const linksDataset2 = d3.csv('./datasets/stack_network_links.csv', row => ({...row, value: parseFloat(row.value)}));
-const wordkedWithDataset = d3.csv('./datasets/stackoverflow_countries_worked_languages_age_sexuality.csv')
+const wordkedWithDataset = d3.csv('./datasets/stackoverflow_countries_worked_languages_age_sexuality.csv').then(data => {
+  data.forEach(item => {
+    item.Age = +item.Age
+    item.Respondent = +item.Respondent
+  })
+
+  return data
+})
 const tagsDataset = d3.csv('./datasets/tags.csv', row => ({...row, count: parseInt(row.count)}))
 const popularityDataset = d3.csv('./datasets/popularity.csv').then(data => {
   const dateParser = d3.utcParse('%B %Y');

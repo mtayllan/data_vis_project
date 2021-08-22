@@ -6,9 +6,11 @@
   const langDim = facts.dimension(d => d.LanguageWorkedWith);
   const langDimGroup = langDim.group()
 
-  const sexualityDim = facts.dimension(d => d.Sexuality)
+  const ageDim = facts.dimension(d => d.Age);
+  const ageDimGroup = ageDim.group()
 
   const piechart = dc.pieChart("#languages-pie-chart");
+  const ageBarChart = dc.barChart('#ages-bar')
 
   const all = facts.groupAll();
 
@@ -17,7 +19,7 @@
     .height(400)
     .slicesCap(5)
     .innerRadius(50)
-    .dimension(countryDim)
+    .dimension(langDim)
     .group(langDimGroup)
     .legend(dc.legend().highlightSelected(true))
     .label(function(d) { return d.key + "(" + Math.floor(d.value / all.value() * 100) + "%)"; })
@@ -46,6 +48,17 @@
   rowChartCountry.on('preRedraw', function(chart) {
     chart.calculateColorDomain();
   });
+
+  ageBarChart.width(700)
+  .height(150)
+  .margins({top: 10, right: 20, bottom: 20, left: 40})
+  .dimension(ageDim)
+  .group(ageDimGroup)
+  .gap(70)
+  .x(d3.scaleLinear().domain([ageDim.bottom(1)[0].Age, ageDim.top(1)[0].Age]))
+  .elasticY(true)
+  .centerBar(true)
+  .renderHorizontalGridLines(true)
 
     dc.renderAll();
 })()
