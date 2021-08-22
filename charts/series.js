@@ -29,7 +29,7 @@
     .yAxisLabel('% de Popularidade')
     .xAxisLabel('Tempo')
     .renderHorizontalGridLines(true)
-    .legend(dc.legend().x(990 - 100).y(5).itemHeight(13).gap(5))
+    .legend(new dc.HtmlLegend().container('#langs-legend').horizontal(true).highlightSelected(true))
     .brushOn(false)
     .rangeChart(dateRangeChart)
     .compose([]);
@@ -64,18 +64,18 @@
     dc.renderAll()
   }
 
-  const handleSelectChange = (selected_lang) => {
-    select_box = document.querySelectorAll(`input[type='checkbox'][value='${selected_lang}']`)[0]
+  const handleSelectChange = (selectedLang) => {
+    select_box = document.querySelectorAll(`input[type='checkbox'][value='${selectedLang}']`)[0]
 
     if (select_box.checked == true) {
       if (document.querySelectorAll('input[type="checkbox"]:checked').length > 5) {
         alert('Você só pode selecionar até 5 linguagens!')
         select_box.checked = false
       } else {
-        selectedLanguages.push(selected_lang)
+        selectedLanguages.push(selectedLang)
       }
     } else {
-      removeLanguage(selected_lang)
+      removeLanguage(selectedLang)
     }
 
     build();
