@@ -12,7 +12,7 @@
     .map(link => link.target);
 
   const buildbar = () => {
-    const barChart = dc.barChart(document.querySelector("#bars2"));
+    const barChart = dc.barChart(document.querySelector("#bars"));
     const selectedTech = d3.select("#selected-dropdown select").node().value;
     const filteredTargets = filterTargets(selectedTech);
 
