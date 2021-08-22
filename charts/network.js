@@ -9,8 +9,8 @@
   const height = 600;
 
   const svg = d3.select('#network').append('svg')
-                .attr('width', width).attr('height', height)
-                .attr("viewBox", [-width / 2, -height / 2, width, height]);
+    .attr('width', width).attr('height', height)
+    .attr("viewBox", [-width / 2, -height / 2, width, height]);
 
   const forceSimulation = (nodes, links) =>
     d3.forceSimulation(nodes)
@@ -33,7 +33,7 @@
     .append('circle')
     .attr('class', 'node')
     .attr('id', d => `node-${d.name}`)
-    .attr('r', d => sizeScale(d.nodesize)/150)
+    .attr('r', d => sizeScale(d.nodesize) / 150)
     .attr('fill', d => defaultOrdinalColorScale(d.group))
     .attr('stroke', 'black')
     .attr('stroke-width', d => d.highlight ? 2 : 0);
@@ -76,20 +76,20 @@
   node.call(drag(simulation));
 
   node.append('title')
-      .text(d => `Grupo ${d.group}: ${d.name} (${d.nodesize})`);
+    .text(d => `Grupo ${d.group}: ${d.name} (${d.nodesize})`);
 
-  const legend_g = svg.selectAll(".legend")
-    .data(nodes.map(n => n.group).filter(onlyUnique).sort(function (a, b) {  return a - b;  }))
+  const legend = svg.selectAll(".legend")
+    .data(nodes.map(n => n.group).filter(onlyUnique).sort(function (a, b) { return a - b; }))
     .enter().append("g")
     .attr("transform", (d, i) => `translate(220,${i * 20})`);
 
-    legend_g.append("circle")
+  legend.append("circle")
     .attr("cx", 0)
     .attr("cy", 0)
     .attr("r", 5)
     .attr("fill", (d) => defaultOrdinalColorScale(d));
 
-    legend_g.append("text")
+  legend.append("text")
     .attr("x", 10)
     .attr("y", 5)
     .text(d => `Grupo ${d}`);

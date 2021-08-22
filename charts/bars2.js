@@ -9,7 +9,7 @@
   const facts = crossfilter(links);
   const dimension = facts.dimension(d => d.target);
   const filterTargets = (tech) => links.filter(link => link.source == tech)
-                                      .map(link => link.target);
+    .map(link => link.target);
 
   const buildbar = () => {
     const barChart = dc.barChart(document.querySelector("#bars2"));
@@ -25,7 +25,7 @@
     });
 
     const groupByName = (name) => {
-      if(typeof name !== 'undefined') {
+      if (typeof name !== 'undefined') {
         return nodes.find(no => no.name === name).group
       }
     };
@@ -42,7 +42,7 @@
       .colorAccessor(d => d.key)
       .renderHorizontalGridLines(true)
       .colorCalculator(d => {
-        if(typeof groupByName(d.key) !== 'undefined') {
+        if (typeof groupByName(d.key) !== 'undefined') {
           return defaultOrdinalColorScale(groupByName(d.key))
         } else {
           return '#aaaa'
@@ -58,7 +58,7 @@
 
   d3.select('#selected-dropdown')
     .append('select')
-    .attr('class','select form-select')
+    .attr('class', 'select form-select')
     .on('change', buildbar)
     .selectAll('option')
     .data(uniqueSources).enter()
