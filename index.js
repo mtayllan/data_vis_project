@@ -1,10 +1,16 @@
 const nodesDataset = d3.csv('./datasets/stack_network_nodes.csv', row => ({...row, nodesize: parseFloat(row.nodesize)}));
 const linksDataset = d3.csv('./datasets/stack_network_links.csv', row => ({...row, value: parseFloat(row.value)}));
 const linksDataset2 = d3.csv('./datasets/stack_network_links.csv', row => ({...row, value: parseFloat(row.value)}));
-const wordkedWithDataset = d3.csv('./datasets/stackoverflow_countries_worked_languages_age_sexuality.csv').then(data => {
+const wordkedWithDataset = d3.csv('./datasets/stackoverflow_countries_worked_languages_age_sexuality_gender_yearsCoding.csv').then(data => {
   data.forEach(item => {
     item.Age = +item.Age
     item.Respondent = +item.Respondent
+
+    if (item.YearsCode == 'More than 50 years') {
+      item.YearsCode = 50
+    } else {
+      item.YearsCode = +item.YearsCode
+    }
   })
 
   return data

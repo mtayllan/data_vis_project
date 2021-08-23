@@ -128,13 +128,20 @@
     <div class="b-divider"></div>
 
     <div class="px-4 pt-5 my-5 text-center border-bottom">
-      <h1 class="display-4 fw-bold">Linguagens com as quais programadores mais trabalham em 2021</h1>
-      <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">
-          Selecione um país e filtre as linguagens mais populares.
-          <br>
-          Visualização construída a partir da base de dados adquirida em LINK DO KAGGLE.
-        </p>
+      <div class="row mx-3">
+        <div class="col-6">
+          <h1 class="display-6 fw-bold lh-1 text-lg-start">Linguagens com as quais programadores mais trabalham em 2021</h1>
+        </div>
+        <div class="col-6">
+          <p class="lead mb-4 text-lg-start">
+            Descubra as linguagens mais utilizadas no trabalho até 2020 selecionando dentr filtros de país, idade e anos de prática.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div id="reset">
+          <a class="reset" href="javascript:dc.filterAll(); dc.renderAll();">Resetar Filtros</a>
+        </div>
       </div>
       <div class="container p-5">
         <div class="row">
@@ -142,14 +149,11 @@
           <div id="languages-pie-chart" class="col-6"></div>
         </div>
         <div class="row">
-          <div id="ages-bar"></div>
-        </div>
-        <div class="row">
-          <div id="reset">
-            <a class="reset" href="javascript:dc.filterAll(); dc.renderAll();">Resetar Filtros</a>
-          </div>
+          <div id="ages-bar" class="col-6"></div>
+          <div id="sexualities-bar" class="col-6"></div>
         </div>
       </div>
+      Base de dados adaptada do <a href="https://www.kaggle.com/aitzaz/stack-overflow-developer-survey-2020">Kaggle</a>.
     </div>
 
     <div class="b-divider"></div>
