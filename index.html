@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   <link rel="stylesheet" href="index.css">
   <link rel="stylesheet" href="custom.dc.css">
-  <title>Trab Vis</title>
+  <title>Trabalho de Visualização</title>
 </head>
+
 <body>
   <main>
     <div class="px-4 py-5 my-5 text-center">
@@ -16,7 +19,8 @@
       <h1 class="display-5 fw-bold">Linguagens de Programação: popularidade, tendências e correlações.</h1>
       <div class="col-lg-6 mx-auto">
         <p class="lead mb-4">
-          Vamos conhecer as linguagens mais populares, seu relacionamento com outras tecnologias e o ecossistema ao seu redor.
+          Vamos conhecer as linguagens mais populares, seu relacionamento com outras tecnologias e o ecossistema ao seu
+          redor.
         </p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
           <a href="#network-section" class="btn btn-primary btn-lg px-4 gap-3">
@@ -37,9 +41,11 @@
         <p class="lead mb-4">
           Rede de Linguagens e como se relacionam através de outras tecnologias.
           <br>
-          A equipe de dados do StackOverflow, baseada no Developer Story de desenvolvedores, fez a correlação entre as tecnologias. Quanto mais frequentemente duas aparecem juntas, maior a conexão entre elas.
+          A equipe de dados do StackOverflow, baseada no Developer Story de desenvolvedores, fez a correlação entre as
+          tecnologias. Quanto mais frequentemente duas aparecem juntas, maior a conexão entre elas.
           <br>
-          Selecionar um dos grupo existentes possibilita a visualização de todas as linguagens referentes àquele grupo.
+          Ponha o cursor nos nós da rede para identificar o grupo, a linguagem e força de relacionamento pelas
+          tecnologias.
         </p>
       </div>
       <div class="container px-5">
@@ -55,16 +61,18 @@
         <h1 class="display-5 fw-bold text-white">Tags que mais aparecem no StackOverflow</h1>
         <div class="col-lg-6 mx-auto">
           <p class="fs-5 mb-4">
-            A visualização abaixo apresenta a quantidade total de vezes que uma tecnologia foi mencionada em questões feitas no
+            A visualização abaixo apresenta a quantidade total de vezes que uma tecnologia foi mencionada em questões
+            feitas no
             StackOverflow em 2020.
             <br>
-            De 115 tecnologias disponíveis, foram filtradas as 15 tecnologias com maior quantidade de vezes e dispostas em barras verticais em ordem decrescente.
+            De 115 tecnologias disponíveis, foram filtradas as 15 tecnologias com maior quantidade de vezes e dispostas
+            em barras verticais em ordem decrescente.
           </p>
         </div>
         <div id="top-row"></div>
-        <div id="top-row-legend" class="d-flex justify-content-center"></div>
       </div>
-      Base de dados adaptada do <a href="https://ia600107.us.archive.org/view_archive.php?archive=/27/items/stackexchange/stackoverflow.com-Tags.7z">Kaggle</a>.
+      Base de dados adaptada do <a
+        href="https://ia600107.us.archive.org/view_archive.php?archive=/27/items/stackexchange/stackoverflow.com-Tags.7z">Site</a>.
     </div>
 
     <div class="b-divider"></div>
@@ -76,7 +84,9 @@
           <p class="col-lg-10 fs-5">
             Ao selecionar uma tecnologia, pode-se ver ao lado o quanto a tecnologia selecionada se relaciona com outras.
             <br>
-            De forma ordenada e decrescente, é apresentada a frequência que uma determinada tecnologia apareceu em conjunto da tecnologia selecionada nas Developer Stories ou nos professional profiles/CVs/resumes dos desenvolvedores capturados pela equide de dados do StackOverflow.
+            De forma ordenada e decrescente, é apresentada a frequência que uma determinada tecnologia apareceu em
+            conjunto da tecnologia selecionada nas Developer Stories ou nos professional profiles/CVs/resumes dos
+            desenvolvedores capturados pela equide de dados do StackOverflow.
           </p>
           <div id="selected-dropdown"></div>
         </div>
@@ -94,8 +104,10 @@
       <h1 class="display-4 fw-bold">Linguagens de programação mais populares (2004-2021)</h1>
       <div class="col-lg-6 mx-auto">
         <p class="lead mb-4">
-          Selecione até 5 linguagens de programação das 28 possíveis abaixo e poderá ver seu nível de popularidade ao longo
-          do período de Julho de 2004 a Maio de 2021, apresentando tendências de queda, crescimento ou estabilidade, com possibilidade de comparação entre as linguagens nesse período.
+          Selecione até 5 linguagens de programação das 28 possíveis abaixo e poderá ver seu nível de popularidade ao
+          longo
+          do período de Julho de 2004 a Maio de 2021, apresentando tendências de queda, crescimento ou estabilidade, com
+          possibilidade de comparação entre as linguagens nesse período.
         </p>
       </div>
       <div class="container p-5">
@@ -106,20 +118,23 @@
         </div>
         <div id="series"></div>
         <div id="date-range-selector"></div>
-        Selecione um intervalo de datas para filtrar seus dados.
       </div>
-      Base de dados adaptada do <a href="https://www.kaggle.com/muhammadkhalid/most-popular-programming-languages-since-2004">Kaggle</a>.
+      Base de dados adaptada do <a
+        href="https://www.kaggle.com/muhammadkhalid/most-popular-programming-languages-since-2004">Kaggle</a>.
     </div>
 
     <div class="b-divider"></div>
 
     <div class="bg-dark text-secondary px-4 py-5 text-center">
       <div class="py-5">
-        <h1 class="display-5 fw-bold text-white">Linguagem usada ano passado VS Linguagem desejada para o próximo ano</h1>
+        <h1 class="display-5 fw-bold text-white">Linguagem usada ano passado VS Linguagem desejada para o próximo ano
+        </h1>
         <div class="col-lg-6 mx-auto">
           <p class="fs-5 mb-4">
-            O gráfico abaixo foi criado a partir de dados coletados no ano de 2020, mas as relações apresentadas são entre linguagens que desenvolvedores utilizaram em seus trabalhos no ano de 2019
-            e as linguagens que eles desejavam usar para trabalhar no ano de 2021 (não significando que é do desejo do desenvolvedor abandonar a linguagem atual).
+            O gráfico abaixo foi criado a partir de dados coletados no ano de 2020, mas as relações apresentadas são
+            entre linguagens que desenvolvedores utilizaram em seus trabalhos no ano de 2019
+            e as linguagens que eles desejavam usar para trabalhar no ano de 2021 (não significando que é do desejo do
+            desenvolvedor abandonar a linguagem atual).
           </p>
         </div>
         <div id="chord"></div>
@@ -132,11 +147,13 @@
     <div class="px-4 pt-5 my-5 text-center border-bottom">
       <div class="row mx-3">
         <div class="col-6">
-          <h1 class="display-6 fw-bold lh-1 text-lg-start">Linguagens com as quais programadores mais trabalham em 2021</h1>
+          <h1 class="display-6 fw-bold lh-1 text-lg-start">Linguagens com as quais programadores mais trabalham em 2021
+          </h1>
         </div>
         <div class="col-6">
           <p class="lead mb-4 text-lg-start">
-            Descubra as linguagens mais utilizadas no trabalho até 2020 selecionando dentr filtros de país, idade e anos de prática.
+            Descubra as linguagens mais utilizadas no trabalho até 2020 selecionando dentr filtros de país, idade e anos
+            de prática.
           </p>
         </div>
       </div>
@@ -180,13 +197,17 @@
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://unpkg.com/dc@4.2.7/dist/dc.js"></script>
   <script src="https://unpkg.com/crossfilter2@1.5.4/crossfilter.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+    crossorigin="anonymous"></script>
   <script src="index.js"></script>
   <script src="charts/network.js"></script>
   <script src="charts/row.js"></script>
   <script src="charts/bars.js"></script>
   <script src="charts/series.js"></script>
   <script src="charts/chord.js"></script>
+  <script src="charts/row.js"></script>
   <script src="charts/pie_and_row.js"></script>
 </body>
+
 </html>
