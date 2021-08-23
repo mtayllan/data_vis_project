@@ -9,15 +9,12 @@
   const ageDim = facts.dimension(d => d.Age);
   const ageDimGroup = ageDim.group()
 
-  // const sexualityDim = facts.dimension(d => d.Sexuality);
-  // const sexualityDimGroup = sexualityDim.group()
-
   const yearsCodeDim = facts.dimension(d => d.YearsCode);
   const yearsCodeDimGroup = yearsCodeDim.group()
 
   const piechart = dc.pieChart("#languages-pie-chart");
   const ageBarChart = dc.barChart('#ages-bar')
-  const yearsCodingBarChart = dc.barChart('#sexualities-bar')
+  const yearsCodingBarChart = dc.barChart('#yars-coding-bar')
 
   const all = facts.groupAll();
 
@@ -68,26 +65,6 @@
   .renderHorizontalGridLines(true)
   .yAxisLabel('Qtd. de Respostas')
   .xAxisLabel('Idade')
-
-  // sexyalityScale = d3
-  // .scaleOrdinal()
-  // .domain(["Straight / Heterosexual", "Bisexual", "Gay or Lesbian", "Queer"])
-  // .range(["#59A14F", "#AF7AA1", "#fdae61", "#E15759"])
-
-  // sexualityBarChart.width(500)
-  // .height(250)
-  // .margins({top: 10, right: 20, bottom: 40, left: 60})
-  // .dimension(sexualityDim)
-  // .group(sexualityDimGroup)
-  // .gap(40)
-  // .xUnits(dc.units.ordinal)
-  // .x(sexyalityScale)
-  // .elasticY(true)
-  // .colors(sexyalityScale)
-  // .colorAccessor(d => d.key)
-  // .renderHorizontalGridLines(true)
-  // .yAxisLabel('Qtd. de Respostas')
-  // .xAxisLabel('Orientação')
 
   yearsCodingBarChart.width(500)
   .height(250)
