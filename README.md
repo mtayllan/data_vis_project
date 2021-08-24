@@ -11,7 +11,5 @@ Visualização desenvolvida para disciplina de Visualização de Dados (CK0266)
 - Messias Tayllan Teles Farias
 - Pedro Henrique dos Santos e Silva
 
-<br>
-
 ### Professora
 - Emanuele Marques Rodrigues Santos
